@@ -99,7 +99,8 @@ export default function Hero({ onStart }) {
             border: 'none',
             borderRadius: 10,
             height: 52,
-            width: 280,
+            width: '100%',
+            maxWidth: 280,
             cursor: 'pointer',
             transition: 'transform 0.15s ease',
           }}

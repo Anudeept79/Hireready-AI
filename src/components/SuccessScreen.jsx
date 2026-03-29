@@ -103,11 +103,10 @@ export default function SuccessScreen({ userName, userEmail, generatedData, form
 
   return (
     <div style={{ paddingTop: 48 }}>
-      <div style={{
+      <div className="success-card" style={{
         background: '#0A1F0A',
         border: '0.5px solid #00FF88',
         borderRadius: 16,
-        padding: 40,
         textAlign: 'center',
         position: 'relative',
         overflow: 'hidden',

@@ -171,11 +171,10 @@ export default function FormStep2({ formData, onChange, onBack, onNext, addTag }
   );
 
   return (
-    <div style={{
+    <div className="form-card" style={{
       background: '#141414',
       border: '0.5px solid #2A2A2A',
       borderRadius: 16,
-      padding: 32,
       marginTop: 16,
     }}>
       <h2 style={{ fontSize: 18, fontWeight: 500, color: '#FFFFFF', marginBottom: 4, fontFamily: 'Inter, system-ui' }}>
@@ -296,11 +295,11 @@ export default function FormStep2({ formData, onChange, onBack, onNext, addTag }
 
       {/* Job Description */}
       <div style={{ marginBottom: 16 }}>
-        <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', marginBottom:6 }}>
+        <div style={{ display:'flex', alignItems:'flex-start', justifyContent:'space-between', marginBottom:6, flexWrap:'wrap', gap:6 }}>
           <label style={{ fontSize:13, fontWeight:500, color:'#FFFFFF', fontFamily:'Inter, system-ui' }}>
             Job Description
           </label>
-          <div style={{ display:'flex', alignItems:'center', gap:8 }}>
+          <div style={{ display:'flex', alignItems:'center', gap:8, flexWrap:'wrap' }}>
             {formData.jobRole && (
               <button
                 onClick={handleSuggestKeywords}

@@ -116,11 +116,10 @@ export default function FormStep3({ formData, onChange, addTag, removeTag, onBac
   const suggestions = getSuggestions(formData.jobRole).filter(s => !formData.skillTags.includes(s));
 
   return (
-    <div style={{
+    <div className="form-card" style={{
       background: '#141414',
       border: '0.5px solid #2A2A2A',
       borderRadius: 16,
-      padding: 32,
       marginTop: 16,
     }}>
       <h2 style={{ fontSize: 18, fontWeight: 500, color: '#FFFFFF', marginBottom: 4, fontFamily: 'Inter, system-ui' }}>

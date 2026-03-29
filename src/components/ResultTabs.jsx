@@ -197,9 +197,9 @@ export default function ResultTabs({ resumeData, formData, atsScore, onDownload,
           display: 'flex', alignItems: 'center', justifyContent: 'center',
           padding: 24,
         }} onClick={() => setShowRegenerateModal(false)}>
-          <div onClick={e => e.stopPropagation()} style={{
+          <div onClick={e => e.stopPropagation()} className="result-modal" style={{
             background: '#141414', border: '0.5px solid #2A2A2A',
-            borderRadius: 20, padding: 32, maxWidth: 480, width: '100%',
+            borderRadius: 20, maxWidth: 480, width: '100%',
             animation: 'slideUp 0.3s cubic-bezier(0.16,1,0.3,1)',
           }}>
             {/* Header */}

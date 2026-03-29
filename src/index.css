@@ -79,7 +79,39 @@ select::placeholder {
 .hero-heading {
   font-size: 42px;
 }
+
+/* Form card responsive padding */
+.form-card {
+  padding: 32px;
+}
+
+/* Result modal responsive */
+.result-modal {
+  padding: 32px;
+}
+
+/* Success card responsive */
+.success-card {
+  padding: 40px;
+}
+
 @media (max-width: 640px) {
   .hero-heading { font-size: 28px; }
   .cta-button { width: 100% !important; }
+
+  /* Reduce form card padding on mobile */
+  .form-card { padding: 20px; }
+
+  /* Result modal padding */
+  .result-modal { padding: 20px; }
+
+  /* Success card padding */
+  .success-card { padding: 24px; }
+}
+
+@media (max-width: 380px) {
+  .hero-heading { font-size: 24px; }
+  .form-card { padding: 16px; }
+  .result-modal { padding: 16px; }
+  .success-card { padding: 20px; }
 }
