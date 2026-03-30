@@ -39,7 +39,7 @@ export default function Navbar({ appState, onHome, onBack, onHelp }) {
           onClick={onHome}
           style={{ fontSize: 16, fontWeight: 500, color: '#FFFFFF', fontFamily: 'Inter, system-ui', cursor: 'pointer' }}
         >
-          HireReady AI
+          MyResumeAI
         </span>
       </div>
       {appState !== 'help' && (

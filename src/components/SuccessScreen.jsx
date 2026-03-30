@@ -90,7 +90,7 @@ export default function SuccessScreen({ userName, userEmail, generatedData, form
 
   const allDownloaded = downloaded.resume && downloaded.cover && downloaded.linkedin;
   const firstName = userName || 'there';
-  const whatsappText = encodeURIComponent('Bhai, I just made my resume in 60 seconds using AI — try it free: https://hirereadyai.in');
+  const whatsappText = encodeURIComponent('Bhai, I just made my resume in 60 seconds using AI — try it free: https://myresumeai.org');
 
   const downloadBtnStyle = (done) => ({
     display: 'flex', alignItems: 'center', gap: 10,

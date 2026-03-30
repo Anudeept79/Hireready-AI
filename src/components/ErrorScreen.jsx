@@ -3,9 +3,9 @@ import { haptic } from '../utils/haptics';
 
 const MESSAGES = {
   AUTH_ERROR:    'API key issue — please contact support.',
-  RATE_LIMIT:    'HireReady AI is very busy right now — please try again in 2 minutes. Your form data is saved.',
+  RATE_LIMIT:    'MyResumeAI is very busy right now — please try again in 2 minutes. Your form data is saved.',
   PARSE_ERROR:   'Something went wrong formatting your resume — trying again will likely fix this.',
-  INCOMPLETE:    'HireReady AI generated an incomplete response — please try again.',
+  INCOMPLETE:    'MyResumeAI generated an incomplete response — please try again.',
   NETWORK:       'Lost connection — please check your internet and try again.',
   PAYMENT_FAIL:  'Payment did not go through — your resume is still here. Try again.',
   RAZORPAY_LOAD: 'Payment window could not load. Please disable your ad blocker and try again.',

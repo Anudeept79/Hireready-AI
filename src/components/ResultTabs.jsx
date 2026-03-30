@@ -259,7 +259,7 @@ export default function ResultTabs({ resumeData, formData, atsScore, onDownload,
                   Enhance automatically with AI
                 </div>
                 <div style={{ fontSize: 12, color: 'rgba(0,0,0,0.6)', fontFamily: 'Inter, system-ui' }}>
-                  HireReady AI fills the gaps and rebuilds your resume to maximise your ATS score
+                  MyResumeAI fills the gaps and rebuilds your resume to maximise your ATS score
                 </div>
               </div>
             </button>

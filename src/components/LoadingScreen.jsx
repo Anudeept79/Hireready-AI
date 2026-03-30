@@ -96,7 +96,7 @@ export default function LoadingScreen({ generatedData, onComplete }) {
       <h2 className="anim-fadeIn" style={{
         fontSize: 15, fontWeight: 500, color: '#FFFFFF', marginBottom: 4, fontFamily: 'Inter, system-ui',
       }}>
-        HireReady AI is crafting your resume
+        MyResumeAI is crafting your resume
       </h2>
       <p className="anim-fadeIn delay-1" style={{
         fontSize: 12, color: '#888888', marginBottom: 32, fontFamily: 'Inter, system-ui',
@@ -215,7 +215,7 @@ export default function LoadingScreen({ generatedData, onComplete }) {
         <p className="anim-fadeIn" style={{
           fontSize: 11, color: '#FFB800', marginTop: 16, fontFamily: 'Inter, system-ui',
         }}>
-          Taking a bit longer than usual — HireReady AI is working hard. Please don't close this tab.
+          Taking a bit longer than usual — MyResumeAI is working hard. Please don't close this tab.
         </p>
       )}
     </div>

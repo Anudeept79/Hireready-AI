@@ -7,8 +7,8 @@ const SECTIONS = [
         <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5" fill="#00C8FF"/>
       </svg>
     ),
-    title: 'What is HireReady AI?',
-    body: 'HireReady AI is a free AI-powered resume builder built for Indian freshers and professionals. Fill a 3-step form, and Claude AI writes your resume, cover letter, and LinkedIn About section — all ATS-optimised and ready to download as PDF.',
+    title: 'What is MyResumeAI?',
+    body: 'MyResumeAI is a free AI-powered resume builder built for Indian freshers and professionals. Fill a 3-step form, and Claude AI writes your resume, cover letter, and LinkedIn About section — all ATS-optimised and ready to download as PDF.',
   },
   {
     icon: (
@@ -35,7 +35,7 @@ const SECTIONS = [
       </svg>
     ),
     title: 'What is ATS and why does it matter?',
-    body: 'ATS (Applicant Tracking System) is software used by companies like TCS, Infosys, Wipro, and most startups to filter resumes before a human ever sees them. 75% of resumes are rejected by ATS. HireReady AI formats your resume to pass ATS screening — single column, correct headings, keyword matching.',
+    body: 'ATS (Applicant Tracking System) is software used by companies like TCS, Infosys, Wipro, and most startups to filter resumes before a human ever sees them. 75% of resumes are rejected by ATS. MyResumeAI formats your resume to pass ATS screening — single column, correct headings, keyword matching.',
   },
   {
     icon: (
@@ -98,7 +98,7 @@ export default function HelpScreen({ onBack }) {
         <p style={{
           fontSize: 14, color: '#888888', fontFamily: 'Inter, system-ui', lineHeight: 1.6,
         }}>
-          Everything you need to know about HireReady AI
+          Everything you need to know about MyResumeAI
         </p>
       </div>
 
@@ -117,7 +117,7 @@ export default function HelpScreen({ onBack }) {
           Still have questions?
         </p>
         <p style={{ fontSize: 12, color: '#888888', fontFamily: 'Inter, system-ui', lineHeight: 1.6 }}>
-          Email us at <span style={{ color: '#00C8FF' }}>support@hirereadyai.in</span> — we reply within 24 hours.
+          Email us at <span style={{ color: '#00C8FF' }}>support@myresumeai.org</span> — we reply within 24 hours.
         </p>
       </div>
 

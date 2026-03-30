@@ -16,8 +16,8 @@ export async function initiatePayment({ userName, userEmail, userPhone, onSucces
   const options = {
     key: import.meta.env.VITE_RAZORPAY_KEY_ID,
     amount: 4900, currency: 'INR',
-    name: 'HireReady AI',
-    description: 'Resume + Cover Letter + LinkedIn PDF Download',
+    name: 'MyResumeAI',
+    description: 'Resume + Cover Letter + LinkedIn PDF — MyResumeAI',
     prefill: { name: userName, email: userEmail, contact: userPhone },
     notes: { product: 'resume_download_v1' },
     theme: { color: '#00C8FF' },

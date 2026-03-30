@@ -21,15 +21,15 @@ import ResumeHistory from './components/ResumeHistory';
 import HelpScreen from './components/HelpScreen';
 
 const TITLES = {
-  landing: 'HireReady AI — Free AI Resume Builder',
-  form_step_1: 'HireReady AI — Step 1 of 3',
-  form_step_2: 'HireReady AI — Step 2 of 3',
-  form_step_3: 'HireReady AI — Step 3 of 3',
-  generating: 'HireReady AI — Generating your resume...',
-  results: 'HireReady AI — Your resume is ready',
-  payment: 'HireReady AI — Download your resume',
-  success: 'HireReady AI — Downloaded!',
-  help: 'HireReady AI — Help',
+  landing: 'MyResumeAI — Free AI Resume Builder',
+  form_step_1: 'MyResumeAI — Step 1 of 3',
+  form_step_2: 'MyResumeAI — Step 2 of 3',
+  form_step_3: 'MyResumeAI — Step 3 of 3',
+  generating: 'MyResumeAI — Generating your resume...',
+  results: 'MyResumeAI — Your resume is ready',
+  payment: 'MyResumeAI — Download your resume',
+  success: 'MyResumeAI — Downloaded!',
+  help: 'MyResumeAI — Help',
 };
 
 function saveToHistory(data, formData, score) {
@@ -90,7 +90,7 @@ export default function App() {
   const [showSaved, setShowSaved] = useState(false);
 
   useEffect(() => {
-    document.title = TITLES[appState] || 'HireReady AI';
+    document.title = TITLES[appState] || 'MyResumeAI';
   }, [appState]);
 
   // Check for paid resume on mount (Use Case 3)

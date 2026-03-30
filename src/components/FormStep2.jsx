@@ -329,7 +329,7 @@ export default function FormStep2({ formData, onChange, onBack, onNext, addTag }
           onChange={e => onChange('jobDescription', e.target.value)}
           onFocus={() => setFocused('jd')}
           onBlur={() => setFocused(null)}
-          placeholder="Enter the job description you are applying to. HireReady AI will extract and match keywords to your resume automatically — this is the most powerful ATS feature."
+          placeholder="Enter the job description you are applying to. MyResumeAI will extract and match keywords to your resume automatically — this is the most powerful ATS feature."
           style={{
             ...textareaStyle,
             ...(focused === 'jd' ? focusRing : {}),
@@ -341,7 +341,7 @@ export default function FormStep2({ formData, onChange, onBack, onNext, addTag }
           </p>
         )}
         {showJDSuccess && (
-          <SuccessMessage text="Key requirements extracted — HireReady AI will match these to your resume" />
+          <SuccessMessage text="Key requirements extracted — MyResumeAI will match these to your resume" />
         )}
         <div style={{
           background: '#1A1800',
