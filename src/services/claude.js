@@ -1,3 +1,12 @@
+// claude-sonnet-4-20250514 was retired by Anthropic on 15 June 2026 — requests
+// to it return 404, which surfaced to users as the generic error screen.
+const MODEL = 'claude-sonnet-5';
+
+// Sonnet 5 may return thinking blocks before the text block, so never assume
+// content[0] is the answer.
+const extractText = (data) =>
+  data.content?.find((block) => block.type === 'text')?.text ?? '';
+
 const SYSTEM_PROMPT = `You are a senior professional resume writer specialising in the Indian job market. Expert knowledge of ATS systems used by TCS, Infosys, Wipro, Cognizant, HCL, and Indian startups on Naukri and LinkedIn.
 
 ABSOLUTE RULES:
@@ -78,8 +87,9 @@ export async function suggestKeywords(jobRole) {
       'anthropic-dangerous-direct-browser-access': 'true',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: MODEL,
       max_tokens: 150,
+      thinking: { type: 'disabled' },
       messages: [{
         role: 'user',
         content: `List exactly 8 important ATS keywords for a ${jobRole} role at Indian tech companies. Return ONLY a comma-separated list of keywords. No explanation, no numbering, just the keywords.`
@@ -88,7 +98,7 @@ export async function suggestKeywords(jobRole) {
   });
   if (!response.ok) throw new Error('SUGGEST_FAILED');
   const data = await response.json();
-  return data.content[0].text;
+  return extractText(data);
 }
 
 export async function rewriteExperience(rawText, jobRole) {
@@ -101,8 +111,9 @@ export async function rewriteExperience(rawText, jobRole) {
       'anthropic-dangerous-direct-browser-access': 'true',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: MODEL,
       max_tokens: 500,
+      thinking: { type: 'disabled' },
       messages: [{
         role: 'user',
         content: `Rewrite this experience for a ${jobRole} resume. Fix all spelling mistakes, improve grammar, make it achievement-focused with strong action verbs. Keep under 150 words. Return ONLY the rewritten text, nothing else:\n\n${rawText}`
@@ -111,7 +122,7 @@ export async function rewriteExperience(rawText, jobRole) {
   });
   if (!response.ok) throw new Error('REWRITE_FAILED');
   const data = await response.json();
-  return data.content[0].text;
+  return extractText(data);
 }
 
 export async function rewriteJobDescription(rawJD) {
@@ -124,8 +135,9 @@ export async function rewriteJobDescription(rawJD) {
       'anthropic-dangerous-direct-browser-access': 'true',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: MODEL,
       max_tokens: 400,
+      thinking: { type: 'disabled' },
       messages: [{
         role: 'user',
         content: `Extract and list the most important requirements, skills, and keywords from this job description. Format as a clean bulleted list of key requirements only. Return ONLY the extracted list, nothing else:\n\n${rawJD}`
@@ -134,13 +146,15 @@ export async function rewriteJobDescription(rawJD) {
   });
   if (!response.ok) throw new Error('REWRITE_JD_FAILED');
   const data = await response.json();
-  return data.content[0].text;
+  return extractText(data);
 }
 
 export async function generateDocuments(formData) {
   const skills = formData.skillTags?.length > 0 ? formData.skillTags.join(', ') : formData.skills;
 
-  const response = await fetch('https://api.anthropic.com/v1/messages', {
+  let response;
+  try {
+    response = await fetch('https://api.anthropic.com/v1/messages', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -149,8 +163,9 @@ export async function generateDocuments(formData) {
       'anthropic-dangerous-direct-browser-access': 'true',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: MODEL,
       max_tokens: 4000,
+      thinking: { type: 'disabled' },
       system: SYSTEM_PROMPT,
       messages: [{
         role: 'user',
@@ -182,17 +197,26 @@ coverLetter: 3 paragraphs, "Dear Hiring Manager", specific to ${formData.jobRole
 linkedinAbout: first-person, 150 words, conversational, keyword-rich for Indian tech recruiters.`
       }],
     }),
-  });
+    });
+  } catch {
+    // fetch itself only rejects on network/CORS failure — never an HTTP status
+    throw new Error('NETWORK');
+  }
 
-  if (response.status === 401) throw new Error('AUTH_ERROR');
-  if (response.status === 429) throw new Error('RATE_LIMIT');
+  if (response.status === 401 || response.status === 403) throw new Error('AUTH_ERROR');
+  if (response.status === 429 || response.status === 529) throw new Error('RATE_LIMIT');
   if (!response.ok) throw new Error(`API_ERROR_${response.status}`);
 
   const data = await response.json();
-  const text = data.content[0].text;
+  const text = extractText(data);
   const match = text.match(/\{[\s\S]*\}/);
   if (!match) throw new Error('PARSE_ERROR');
-  const parsed = JSON.parse(match[0]);
+  let parsed;
+  try {
+    parsed = JSON.parse(match[0]);
+  } catch {
+    throw new Error('PARSE_ERROR');
+  }
   if (!parsed.resume || !parsed.coverLetter || !parsed.linkedinAbout) throw new Error('INCOMPLETE');
 
   localStorage.setItem('hireready_resume', JSON.stringify({

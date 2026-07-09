@@ -9,7 +9,15 @@ const MESSAGES = {
   NETWORK:       'Lost connection — please check your internet and try again.',
   PAYMENT_FAIL:  'Payment did not go through — your resume is still here. Try again.',
   RAZORPAY_LOAD: 'Payment window could not load. Please disable your ad blocker and try again.',
+  API_ERROR:     'Our AI service hit a temporary problem — your form data is saved. Please try again in a moment.',
   DEFAULT:       'Something went wrong — your form data is saved. Please try again.',
+};
+
+// API_ERROR_404, API_ERROR_500 etc. all resolve to the API_ERROR message
+const resolveMessage = (error) => {
+  if (MESSAGES[error]) return MESSAGES[error];
+  if (typeof error === 'string' && error.startsWith('API_ERROR')) return MESSAGES.API_ERROR;
+  return MESSAGES.DEFAULT;
 };
 
 export default function ErrorScreen({ error, onRetry, retryLabel }) {
@@ -17,7 +25,7 @@ export default function ErrorScreen({ error, onRetry, retryLabel }) {
     haptic.error();
   }, []);
 
-  const message = MESSAGES[error] || MESSAGES.DEFAULT;
+  const message = resolveMessage(error);
 
   return (
     <div style={{ paddingTop: 48 }}>

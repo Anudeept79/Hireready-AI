@@ -13,7 +13,7 @@ AI resume builder for Indian freshers. User fills a guided 3-step form → Claud
 ## Tech stack
 - React 18 + Vite
 - Tailwind CSS — no component libraries, pure utility classes
-- Claude API: claude-sonnet-4-20250514
+- Claude API: claude-sonnet-5 (claude-sonnet-4-20250514 was retired by Anthropic on 15 June 2026 — do not use it)
 - jsPDF (npm) — browser-side PDF generation
 - Razorpay JS SDK (CDN) — payments
 - EmailJS (CDN, free tier) — "email me my resume" cross-device feature
@@ -796,7 +796,7 @@ export async function generateDocuments(formData) {
       'anthropic-version': '2023-06-01',
     },
     body: JSON.stringify({
-      model: 'claude-sonnet-4-20250514',
+      model: 'claude-sonnet-5',
       max_tokens: 4000,
       system: SYSTEM_PROMPT,
       messages: [{
