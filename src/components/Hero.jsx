@@ -1,17 +1,7 @@
-import { useState, useEffect } from 'react';
 import { haptic } from '../utils/haptics';
 import SampleResume from './SampleResume';
 
 export default function Hero({ onStart }) {
-  const [count, setCount] = useState(2847);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCount(c => c + 1);
-    }, 8000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div style={{ paddingTop: 48, textAlign: 'center' }}>
       {/* Pill */}
@@ -49,17 +39,6 @@ export default function Hero({ onStart }) {
         fontFamily: 'Inter, system-ui',
       }}>
         Get a professional, ATS-optimised resume written for you in 60 seconds — no experience needed.
-      </p>
-
-      {/* Live counter */}
-      <p className="anim-fadeInUp delay-3" style={{
-        opacity: 0,
-        fontSize: 13,
-        color: '#00FF88',
-        marginBottom: 24,
-        fontFamily: 'Inter, system-ui',
-      }}>
-        {count.toLocaleString()} resumes created today
       </p>
 
       {/* Trust pills */}
