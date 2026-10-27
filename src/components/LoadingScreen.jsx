@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { SUCCESS_QUOTES, ATS_TIPS } from '../constants/quotes';
+import { ATS_TIPS } from '../constants/quotes';
 
 const STEPS = [
   'Analysing your experience and skills',
@@ -28,10 +28,8 @@ function CheckIcon() {
 
 export default function LoadingScreen({ generatedData, onComplete }) {
   const [currentStep, setCurrentStep] = useState(0);
-  const [quoteIndex, setQuoteIndex] = useState(0);
   const [tipIndex, setTipIndex] = useState(0);
   const [showSlowMessage, setShowSlowMessage] = useState(false);
-  const [quoteFade, setQuoteFade] = useState(true);
   const [tipFade, setTipFade] = useState(true);
   const completedRef = useRef(false);
 
@@ -58,18 +56,6 @@ export default function LoadingScreen({ generatedData, onComplete }) {
     }
   }, [generatedData, currentStep, onComplete]);
 
-  // Quote rotation with crossfade
-  useEffect(() => {
-    const q = setInterval(() => {
-      setQuoteFade(false);
-      setTimeout(() => {
-        setQuoteIndex(i => (i + 1) % SUCCESS_QUOTES.length);
-        setQuoteFade(true);
-      }, 300);
-    }, 4000);
-    return () => clearInterval(q);
-  }, []);
-
   // Tip rotation with fade
   useEffect(() => {
     const t = setInterval(() => {
@@ -78,7 +64,7 @@ export default function LoadingScreen({ generatedData, onComplete }) {
         setTipIndex(i => (i + 1) % ATS_TIPS.length);
         setTipFade(true);
       }, 300);
-    }, 8000);
+    }, 5000);
     return () => clearInterval(t);
   }, []);
 
@@ -87,8 +73,6 @@ export default function LoadingScreen({ generatedData, onComplete }) {
     const slow = setTimeout(() => setShowSlowMessage(true), 20000);
     return () => clearTimeout(slow);
   }, []);
-
-  const quote = SUCCESS_QUOTES[quoteIndex];
 
   return (
     <div style={{ paddingTop: 48, maxWidth: 480, margin: '0 auto', textAlign: 'center' }}>
@@ -156,42 +140,6 @@ export default function LoadingScreen({ generatedData, onComplete }) {
             </div>
           );
         })}
-      </div>
-
-      {/* Quote card */}
-      <div style={{
-        background: '#141414',
-        border: '0.5px solid #2A2A2A',
-        borderRadius: 10,
-        padding: '16px 20px',
-        maxWidth: 340,
-        margin: '0 auto 16px',
-        opacity: quoteFade ? 1 : 0,
-        transition: 'opacity 0.3s ease',
-      }}>
-        <p style={{
-          fontSize: 12, color: '#AAAAAA', fontStyle: 'italic', lineHeight: 1.7,
-          fontFamily: 'Inter, system-ui', marginBottom: 8,
-        }}>
-          "{quote.text}"
-        </p>
-        <p style={{ fontSize: 11, color: '#00C8FF', fontWeight: 500, fontFamily: 'Inter, system-ui' }}>
-          {quote.name}
-        </p>
-        <p style={{ fontSize: 10, color: '#555555', fontFamily: 'Inter, system-ui' }}>
-          {quote.role}
-        </p>
-      </div>
-
-      {/* Dot indicators */}
-      <div style={{ display: 'flex', gap: 4, justifyContent: 'center', marginBottom: 16 }}>
-        {SUCCESS_QUOTES.map((_, i) => (
-          <div key={i} style={{
-            width: 6, height: 6, borderRadius: '50%',
-            background: i === quoteIndex ? '#00C8FF' : '#2A2A2A',
-            transition: 'background 0.3s',
-          }} />
-        ))}
       </div>
 
       {/* ATS Tip bar */}

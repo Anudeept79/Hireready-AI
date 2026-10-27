@@ -35,7 +35,7 @@ const SECTIONS = [
       </svg>
     ),
     title: 'What is ATS and why does it matter?',
-    body: 'ATS (Applicant Tracking System) is software used by companies like TCS, Infosys, Wipro, and most startups to filter resumes before a human ever sees them. 75% of resumes are rejected by ATS. MyResumeAI formats your resume to pass ATS screening — single column, correct headings, keyword matching.',
+    body: 'ATS (Applicant Tracking System) is software used by companies like TCS, Infosys, Wipro, and most startups to filter resumes before a human ever sees them. MyResumeAI formats your resume to pass ATS screening — single column, correct headings, keyword matching.',
   },
   {
     icon: (
@@ -53,7 +53,7 @@ const SECTIONS = [
       </svg>
     ),
     title: 'I am a fresher with no experience. Will this work?',
-    body: 'Yes — 60% of our users are freshers. When you select "Fresher / 0 years" in Step 2, the form adapts to ask about your projects, hackathons, internships, and college activities instead of work experience. Claude AI is trained to write powerful fresher resumes.',
+    body: 'Yes. When you select "Fresher / 0 years" in Step 2, the form adapts to ask about your projects, hackathons, internships, and college activities instead of work experience. Claude AI is trained to write powerful fresher resumes.',
   },
   {
     icon: (

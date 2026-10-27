@@ -229,7 +229,7 @@ export default function FormStep2({ formData, onChange, onBack, onNext, addTag }
           lineHeight: 1.6,
           fontFamily: 'Inter, system-ui',
         }}>
-          No work experience? That's completely fine — 60% of our users are freshers.
+          No work experience? That's completely fine.
           Describe any project, hackathon, internship, or college activity, however small.
         </div>
       </div>
@@ -353,7 +353,7 @@ export default function FormStep2({ formData, onChange, onBack, onNext, addTag }
           color: '#FFB800',
           fontFamily: 'Inter, system-ui',
         }}>
-          Secret weapon: resumes matched to job descriptions get 3× more callbacks
+          Secret weapon: pasting the job description puts its keywords into your resume
         </div>
         {suggestedKeywords.length > 0 && (
           <div style={{ marginTop: 10 }}>
